@@ -4,6 +4,7 @@ import { Text, StyleSheet, Image } from 'react-native'
 import { StackNavigator, DrawerNavigator } from 'react-navigation'
 import Home from './Home';
 import Events from './Events';
+import Photos from './Photos';
 import { Icon } from 'react-native-elements';
 
 
@@ -11,8 +12,16 @@ import { Icon } from 'react-native-elements';
 const DrawerStack = DrawerNavigator({
   Home: { screen: Home },
   Events: { screen: Events },
+  Photos: { screen: Photos },
  
-})
+},
+{
+  contentOptions: {
+    activeTintColor: '#ac1d21',
+  },
+  
+}
+)
 
 const DrawerNavigation = StackNavigator({
   DrawerStack: { screen: DrawerStack }
@@ -24,6 +33,7 @@ const DrawerNavigation = StackNavigator({
         source={require('../img/logobros.png')}
         resizeMode="contain"
       />,
+      
     headerLeft: <Icon 
         iconStyle={styles.touchBtn} 
         color='#ac1d21' 
@@ -34,8 +44,8 @@ const DrawerNavigation = StackNavigator({
             navigation.navigate('DrawerClose')
           }
     }} 
-        type="font-awesome" 
-        name="bars" 
+        type="material-community" 
+        name="menu" 
         size={24} 
         />
   })

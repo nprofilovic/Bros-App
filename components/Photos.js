@@ -20,6 +20,12 @@ const WINDOW_WIDTH = Dimensions.get('window').width;
 const BASE_PADDING = 10;
 
 class Photos extends React.Component {
+    static navigationOptions = {
+      drawerLabel: 'Photos',
+      drawerIcon: ({tintColor}) => (
+        <Icon type="material-community" name="calendar" size={24} color={tintColor} />
+      )
+    }
     constructor(){
       super();
 
