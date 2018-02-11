@@ -9,7 +9,7 @@ import Slide from './Slider';
 
 export default class Home extends React.Component {
     static navigationOptions = {
-      drawerLabel: 'Home',
+      drawerLabel: 'Naslovna',
       drawerIcon: ({tintColor}) => (
         <Icon type="material-community" name="home-circle" size={24} color={tintColor} />
       )

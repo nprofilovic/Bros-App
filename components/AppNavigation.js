@@ -5,14 +5,20 @@ import { StackNavigator, DrawerNavigator } from 'react-navigation'
 import Home from './Home';
 import Events from './Events';
 import Photos from './Photos';
+import Contact from './Contact';
+import AllProducts from './AllProducts';
+import About from './About';
 import { Icon } from 'react-native-elements';
 
 
 // drawer stack
 const DrawerStack = DrawerNavigator({
-  Home: { screen: Home },
-  Events: { screen: Events },
+  Naslovna: { screen: Home },
+  Vesti: { screen: Events },
   Photos: { screen: Photos },
+  Prodizvodi: { screen: AllProducts },
+  Onama: { screen: About },
+  Kontakt: { screen: Contact }
  
 },
 {

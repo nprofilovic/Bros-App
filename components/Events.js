@@ -5,7 +5,7 @@ import HTML from 'react-native-render-html';
 
 export default class Events extends React.Component {
   static navigationOptions = {
-    drawerLabel: 'Events',
+    drawerLabel: 'Vesti',
     drawerIcon: ({tintColor}) => (
       <Icon type="material-community" name="calendar" size={24} color={tintColor} />
     )

@@ -23,7 +23,7 @@ class Photos extends React.Component {
     static navigationOptions = {
       drawerLabel: 'Photos',
       drawerIcon: ({tintColor}) => (
-        <Icon type="material-community" name="calendar" size={24} color={tintColor} />
+        <Icon type="material-community" name="image" size={24} color={tintColor} />
       )
     }
     constructor(){
@@ -35,11 +35,7 @@ class Photos extends React.Component {
         images: []
       }
     }
-    static navigationOptions = {
-      tabBarIcon: () => {
-        return <Icon type="font-awesome" name="photo" size={24} />
-      }
-    }
+   
 
     
 
