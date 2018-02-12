@@ -4,8 +4,8 @@ import { Icon } from 'react-native-elements';
 
 export default class ProductsMan extends React.Component {
     static navigationOptions = {
-        tabBarIcon: () => {
-          return <Icon type="foundation" name="torso" size={24} />
+        tabBarIcon: ({tintColor}) => {
+          return <Icon type="foundation" name="torso" size={24} color={tintColor} />
         }
     }
     render(){

@@ -103,7 +103,13 @@ export default class Events extends React.Component {
       }
     );
   };
-  
+
+  onOpenEvent = () => {
+    console.log('====================================');
+    console.log('Event Press');
+    console.log('====================================');
+    this.props.navigation.navigate('EventItem');
+  } 
   render(){
    
     return(
@@ -112,7 +118,7 @@ export default class Events extends React.Component {
           
           data={this.state.data}
           keyExtractor={item => item.id}
-         
+          
           ListFooterComponent={this.renderFooter}
           renderItem={({ item }) =>{
             if(((item.title.rendered).trim() != "") && ((item.title.rendered).trim() != "Copy"))
@@ -121,8 +127,10 @@ export default class Events extends React.Component {
               <ListItem
                 roundAvatar
                 title={<HTML html={`${item.title.rendered}`} />}
-               // avatar={{uri: item.better_featured_image.source_url}}
+                //avatar={{uri: item.better_featured_image.source_url}}
                 containerStyle={{ borderBottomWidth: 0, }} 
+                
+                
               />
               <View
                 style={{
@@ -138,6 +146,7 @@ export default class Events extends React.Component {
           refreshing={this.state.refreshing}
           onEndReached={this.handleLoadMore}
           onEndReachedThreshold={50}
+          onPress={(item) => this.onOpenEvent(item)}
         />
     </List>
 

@@ -2,16 +2,12 @@ import React from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
 import { Icon } from 'react-native-elements';
 
-export default class ProductsWoman extends React.Component {
-    static navigationOptions = {
-        tabBarIcon: ({tintColor}) => {
-          return <Icon type="foundation" name="torso-female" size={24} color={tintColor} />
-        }
-    }
+export default class EventItem extends React.Component {
+    
     render(){
         return(
             <View style={styles.container}>
-                 <Text>Products Woman Page</Text>
+                 <Text>Event Item Page</Text>
        
             </View>
         );

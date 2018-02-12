@@ -2,9 +2,6 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, Dimensions } from 'react-native';
 
 import { StackNavigator, DrawerNavigator} from 'react-navigation';
-import Home from './components/Home';
-import Events from './components/Events';
-import ContentContainer from './components/ContentContainer';
 import AppNavigation from './components/AppNavigation';
 
 

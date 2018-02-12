@@ -6,15 +6,21 @@ import ProductsWoman from './ProductsWoman';
 
 
 const ProductsNavi = TabNavigator ({
-    Man: { screen: ProductsMan },
     Woman: { screen: ProductsWoman },
+    Man: { screen: ProductsMan },
+    
     
   },{
     tabBarPosition: 'bottom',
     tabBarOptions: {
       showIcon: true,
       showLabel: true,
-      activeTintColor: '#ac1d21'
+      inactiveTintColor: 'black',
+      activeTintColor: 'white',
+      style: {
+        backgroundColor: '#ac1d21',
+      },
+
     },
     contentOptions: {
         activeTintColor: '#ac1d21',

@@ -7,7 +7,7 @@ export default class AllProducts extends React.Component {
     static navigationOptions = {
       drawerLabel: 'Proizvodi',
       drawerIcon: ({tintColor}) => (
-        <Icon type="material-community" name="tshirt-crew" size={24} color={tintColor}  />
+        <Icon type="material-community" name="tshirt-crew" size={24} color={tintColor} />
       )
     }
     render(){
@@ -26,6 +26,5 @@ const styles = StyleSheet.create({
       width: '100%',
       height: '100%'
     },
-    
     
   });

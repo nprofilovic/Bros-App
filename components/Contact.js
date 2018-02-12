@@ -1,7 +1,7 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
-import { Icon } from 'react-native-elements';
-
+import { View, Text, Image, StyleSheet, } from 'react-native';
+import { Icon, Button } from 'react-native-elements';
+import { StackNavigator } from 'react-navigation';
 export default class Contact extends React.Component {
     static navigationOptions = {
         drawerLabel: 'Kontakt',
@@ -13,6 +13,7 @@ export default class Contact extends React.Component {
         return(
             <View style={styles.container}>
                  <Text>Contact Page</Text>
+                 <Button onPress={() => this.props.navigation.navigate('Woman')} title="Events Item" />
        
             </View>
         );

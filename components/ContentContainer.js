@@ -6,21 +6,21 @@ class ContentContainer extends React.Component {
   render(){
     return(
       <View style={styles.contentContainer}>
-          <TouchableOpacity style={styles.col2} onPress={() => this.props.navigation.navigate('Events')}>
-              <CustomImage  imageSource={require('../img/woman.jpg')} />
-          </TouchableOpacity>
+          <View style={styles.col2} onPress={() => this.props.navigation.navigate('Events')}>
+              <CustomImage  imageSource={require('../img/Woman-2.jpg')} />
+          </View>
           <View style={styles.col1}>
-              <CustomImage imageSource={require('../img/woman-model.jpg')} />
+              <CustomImage imageSource={require('../img/Woman1.jpg')} />
           </View>
           <View style={styles.contentBanner}>
               <CustomImage imageSource={require('../img/get-1.jpg')} />
           </View>
 
           <View style={styles.col1}>
-              <CustomImage imageSource={require('../img/man-model.jpg')} />
+              <CustomImage imageSource={require('../img/Man1.jpg')} />
           </View>
           <View style={styles.col2}>
-              <CustomImage imageSource={require('../img/man.jpg')} />
+              <CustomImage imageSource={require('../img/Man-2.jpg')} />
           </View>
       </View>
     );
