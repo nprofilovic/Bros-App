@@ -1,8 +1,8 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image, FlatList, ScrollView, ActivityIndicator, StatusBar } from 'react-native';
-import { List, Icon, ListItem, Avatar  } from 'react-native-elements';
+import { View, StyleSheet, Image, FlatList, ScrollView, ActivityIndicator, StatusBar } from 'react-native';
+import { Icon,  Avatar  } from 'react-native-elements';
 import HTML from 'react-native-render-html';
-
+import { Container, Header, Content, List, ListItem, Thumbnail, Text, Body } from 'native-base';
 export default class Events extends React.Component {
   static navigationOptions = {
     drawerLabel: 'Vesti',
@@ -111,7 +111,9 @@ export default class Events extends React.Component {
     this.props.navigation.navigate('EventItem');
   } 
   render(){
-   
+   console.log('====================================');
+   console.log(this.state.data);
+   console.log('====================================');
     return(
       <List containerStyle={{ borderTopWidth: 0, borderBottomWidth: 0 }} >
         <FlatList
@@ -120,33 +122,25 @@ export default class Events extends React.Component {
           keyExtractor={item => item.id}
           
           ListFooterComponent={this.renderFooter}
-          renderItem={({ item }) =>{
-            if(((item.title.rendered).trim() != "") && ((item.title.rendered).trim() != "Copy"))
-            return (<View>
-              
-              <ListItem
-                roundAvatar
-                title={<HTML html={`${item.title.rendered}`} />}
-                //avatar={{uri: item.better_featured_image.source_url}}
-                containerStyle={{ borderBottomWidth: 0, }} 
-                
-                
-              />
-              <View
-                style={{
-                  height: 1,
-                  width: "86%",
-                  backgroundColor: "#CED0CE",
-                  marginLeft: "14%"
-                }}
-              /></View>
-            )
-          }}
+          renderItem={({ item }) =>  
+          
+              <View>
+                <ListItem>
+                  <Thumbnail square size={80} source={{ uri: item.better_featured_image.source_url }} />
+                  <Body>
+                    <Text>{item.title.rendered}</Text>
+                    <Text note>Its time to build a difference . .</Text>
+                  </Body>
+                </ListItem>
+             
+            </View>
+            
+          }
           onRefresh={this.handleRefresh}
           refreshing={this.state.refreshing}
           onEndReached={this.handleLoadMore}
           onEndReachedThreshold={50}
-          onPress={(item) => this.onOpenEvent(item)}
+          
         />
     </List>
 
