@@ -2,7 +2,8 @@ import React from 'react';
 import { View, StyleSheet, Image, FlatList, ScrollView, ActivityIndicator, StatusBar } from 'react-native';
 import { Icon,  Avatar  } from 'react-native-elements';
 import HTML from 'react-native-render-html';
-import { Container, Header, Content, List, ListItem,  Thumbnail, Text, Body } from 'native-base';
+import { Container, Header, Content, List, ListItem,  Thumbnail, Text, Body, Right } from 'native-base';
+
 export default class Events extends React.Component {
   static navigationOptions = {
     drawerLabel: 'Vesti',
@@ -105,10 +106,7 @@ export default class Events extends React.Component {
   };
 
   onOpenEvent = () => {
-    console.log('====================================');
-    console.log('Event Press');
-    console.log('====================================');
-    this.props.navigation.navigate('More');
+    this.props.navigation.navigate('EventItem');
   } 
   render(){
   
@@ -125,11 +123,14 @@ export default class Events extends React.Component {
               return (
                 
                 <ListItem onPress={this.onOpenEvent}>
-                  <Thumbnail square size={80} source={{ uri: item.featured_image_src }} />
-                  <Body style={styles.bodyText}>
+                  <Thumbnail  size={80} source={{ uri: item.featured_image_src }} />
+                  <Body>
                     <Text>{`${item.title.rendered.toUpperCase()}`}</Text>
                     
                   </Body>
+                  <Right>
+                    <Icon name="arrow-forward" />
+                  </Right>
                 </ListItem>
                 
               )
@@ -158,13 +159,5 @@ const styles = StyleSheet.create({
         borderBottomWidth: 4,
         borderBottomColor: '#ccc'
     },
-    bodyText:{
-      paddingRight: 20,
-    }
-
-
+    
 })
-const styles2 = {
-  p: {margin: 10}
- 
-}
