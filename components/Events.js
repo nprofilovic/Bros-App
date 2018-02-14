@@ -2,7 +2,7 @@ import React from 'react';
 import { View, StyleSheet, Image, FlatList, ScrollView, ActivityIndicator, StatusBar } from 'react-native';
 import { Icon,  Avatar  } from 'react-native-elements';
 import HTML from 'react-native-render-html';
-import { Container, Header, Content, List, ListItem, Thumbnail, Text, Body } from 'native-base';
+import { Container, Header, Content, List, ListItem,  Thumbnail, Text, Body } from 'native-base';
 export default class Events extends React.Component {
   static navigationOptions = {
     drawerLabel: 'Vesti',
@@ -16,7 +16,7 @@ export default class Events extends React.Component {
     this.state = {
       loading: false,
       data: [],
-      page: 1,
+      page: 0,
       refreshing: false,
       siteTitle: ''
     };
@@ -46,7 +46,7 @@ export default class Events extends React.Component {
         this.setState({ loading: false });
       });
   };
-  componentDidMount(){
+  componentDidMoutn(){
     const urlSiteDetail = "http://www.bros-jeans.com/wp-json"
     fetch(urlSiteDetail)
     .then(res => {
@@ -108,12 +108,10 @@ export default class Events extends React.Component {
     console.log('====================================');
     console.log('Event Press');
     console.log('====================================');
-    this.props.navigation.navigate('EventItem');
+    this.props.navigation.navigate('More');
   } 
   render(){
-   console.log('====================================');
-   console.log(this.state.data);
-   console.log('====================================');
+  
     return(
       <List containerStyle={{ borderTopWidth: 0, borderBottomWidth: 0 }} >
         <FlatList
@@ -122,20 +120,20 @@ export default class Events extends React.Component {
           keyExtractor={item => item.id}
           
           ListFooterComponent={this.renderFooter}
-          renderItem={({ item }) =>  
-          
-              <View>
-                <ListItem>
-                  <Thumbnail square size={80} source={{ uri: item.better_featured_image.source_url }} />
-                  <Body>
-                    <Text>{item.title.rendered}</Text>
-                    <Text note>Its time to build a difference . .</Text>
+          renderItem={({ item }) =>{
+             
+              return (
+                
+                <ListItem onPress={this.onOpenEvent}>
+                  <Thumbnail square size={80} source={{ uri: item.featured_image_src }} />
+                  <Body style={styles.bodyText}>
+                    <Text>{`${item.title.rendered.toUpperCase()}`}</Text>
+                    
                   </Body>
                 </ListItem>
-             
-            </View>
-            
-          }
+                
+              )
+            }}
           onRefresh={this.handleRefresh}
           refreshing={this.state.refreshing}
           onEndReached={this.handleLoadMore}
@@ -149,17 +147,24 @@ export default class Events extends React.Component {
 
 }
 const styles = StyleSheet.create({
-header: {
-    height: 60,
-    marginTop: 10,
-    backgroundColor: '#fff',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 20,
-    borderBottomWidth: 4,
-    borderBottomColor: '#ccc'
-},
+    header: {
+        height: 60,
+        marginTop: 10,
+        backgroundColor: '#fff',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: 20,
+        borderBottomWidth: 4,
+        borderBottomColor: '#ccc'
+    },
+    bodyText:{
+      paddingRight: 20,
+    }
 
 
 })
+const styles2 = {
+  p: {margin: 10}
+ 
+}

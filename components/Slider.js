@@ -53,9 +53,7 @@ export default class extends Component {
             this.fatchData();
         }
     render(){
-        console.log('====================================');
-        console.log(this.state.data);
-        console.log('====================================');
+       
         return (
             <View style={{flex:1}}>
                 <Swiper
@@ -64,7 +62,7 @@ export default class extends Component {
                 >
                 {
                     this.state.data.map((item, i) => <Slider 
-                        url={{uri: item.better_featured_image.source_url}}
+                        url={{uri: item.featured_image_src }}
                        
                         key={i}
                     />)

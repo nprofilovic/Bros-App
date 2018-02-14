@@ -8,8 +8,7 @@ import Photos from './Photos';
 import Contact from './Contact';
 import AllProducts from './AllProducts';
 import About from './About';
-import Stores from './Stores';
-import EventItem from './EventItem';
+import More from './More';
 import { Icon } from 'react-native-elements';
 
 
@@ -19,10 +18,13 @@ const DrawerStack = DrawerNavigator({
   Vesti: { screen: Events },
   Photos: { screen: Photos },
   Prodizvodi: { screen: AllProducts },
-  Prodavnice: { screen: Stores },
   Onama: { screen: About },
   Kontakt: { screen: Contact },
-  
+  More: {screen: More,
+    navigationOptions: {
+      drawerLabel: () => null // to hide this header
+    },
+  }
  
 },
 {
