@@ -23,7 +23,7 @@ export default class Home extends React.Component {
             
             <Slide />
             <ContentContainer />
-            <Button onPress={() => this.props.navigation.navigate('Events')} title="Events Page" />
+            
           </ScrollView>
         );
     }

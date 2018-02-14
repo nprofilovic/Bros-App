@@ -7,7 +7,7 @@ class ContentContainer extends React.Component {
     return(
       <View style={styles.contentContainer}>
           <View style={styles.col2} onPress={() => this.props.navigation.navigate('Events')}>
-              <CustomImage  imageSource={require('../img/Woman-2.jpg')} />
+              <CustomImage  imageSource={require('../img/Woman02.jpg')} />
           </View>
           <View style={styles.col1}>
               <CustomImage imageSource={require('../img/Woman1.jpg')} />
@@ -20,7 +20,7 @@ class ContentContainer extends React.Component {
               <CustomImage imageSource={require('../img/Man1.jpg')} />
           </View>
           <View style={styles.col2}>
-              <CustomImage imageSource={require('../img/Man-2.jpg')} />
+              <CustomImage imageSource={require('../img/Man02.jpg')} />
           </View>
       </View>
     );

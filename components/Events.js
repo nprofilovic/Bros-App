@@ -3,6 +3,9 @@ import { View, StyleSheet, Image, FlatList, ScrollView, ActivityIndicator, Statu
 import { Icon,  Avatar  } from 'react-native-elements';
 import HTML from 'react-native-render-html';
 import { Container, Header, Content, List, ListItem,  Thumbnail, Text, Body, Right } from 'native-base';
+import ItemRow from './ItemRow';
+
+
 
 export default class Events extends React.Component {
   static navigationOptions = {
@@ -105,8 +108,13 @@ export default class Events extends React.Component {
     );
   };
 
-  onOpenEvent = () => {
-    this.props.navigation.navigate('EventItem');
+  onOpenEvent = (item) => {
+    this.props.navigation.navigate('EventItem', {
+      image: item.featured_image_src,
+      title: item.title.rendered,
+      content: item.content.rendered,
+      date: item.date
+    });
   } 
   render(){
   
@@ -121,18 +129,10 @@ export default class Events extends React.Component {
           renderItem={({ item }) =>{
              
               return (
+               <View> 
+                <ItemRow event={item} onOpenEvent={() => this.onOpenEvent(item)}/>
                 
-                <ListItem onPress={this.onOpenEvent}>
-                  <Thumbnail  size={80} source={{ uri: item.featured_image_src }} />
-                  <Body>
-                    <Text>{`${item.title.rendered.toUpperCase()}`}</Text>
-                    
-                  </Body>
-                  <Right>
-                    <Icon name="arrow-forward" />
-                  </Right>
-                </ListItem>
-                
+              </View>
               )
             }}
           onRefresh={this.handleRefresh}
