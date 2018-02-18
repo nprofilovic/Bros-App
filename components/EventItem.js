@@ -39,7 +39,7 @@ export default class EventItem extends React.Component {
                     <Body>
                         <Image source={{uri: featured_image }} style={{height: 200, width: "100%", flex: 1}}/>
                         
-                        <HTML html={`${content}`} />
+                        <HTML html={`${content}`} stylesheet={styles}/>
                         
                     </Body>
                     </CardItem>
@@ -71,6 +71,10 @@ const styles = StyleSheet.create({
       fontSize:20,
       fontWeight: 'bold'
     },
-    
+    p:{
+      fontSize:20,
+      textAlign: 'justify',
+        
+    }
     
   });

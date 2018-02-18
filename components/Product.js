@@ -16,29 +16,21 @@ import {
 	NetInfo,
 	DeviceEventEmitter
 } from "react-native";
-import { Icon } from 'react-native-elements';
 import ProductItem from "./ProductItem";
-import Api from "../WooCommerce/Api";
-import css from "../styles/style";
-import product from "../styles/product";
+import Api from "./WooCommerce/Api";
+import css from "./styles/style";
+import product from "./styles/product";
 var offset = 0;
 var offsetHeader = 100;
 var beta = 50;
 
 export default class Product extends Component {
-    static navigationOptions = {
-        tabBarIcon: ({tintColor}) => {
-          return <Icon type="foundation" name="torso" size={24} color={tintColor} />
-        }
-    }
-
-
 	constructor(props) {
 		super(props);
 		this.data = [];
 		this.state = {
 			page: 1,
-			limit: 30,
+			limit: 2,
 			isOnline: true,
 			isLoading: false,
 			finish: false,
@@ -126,10 +118,12 @@ export default class Product extends Component {
 	render() {
 		return (
 			<View style={product.color}>
-				
+				<Animated.View style={[css.toolbarView, {transform: [{translateY: this.state._animatedMenu}]}]}>
+					<TextInput style={css.inputSearch} underlineColorAndroid='rgba(0,0,0,0)' placeholder={'Search'}/>
+				</Animated.View>
 
 				<ScrollView
-					style={{paddingTop: 20}}
+					style={{paddingTop: 106}}
 					onScroll={this.onScroll.bind(this)} scrollEventThrottle={30}
 				>
 					<ListView

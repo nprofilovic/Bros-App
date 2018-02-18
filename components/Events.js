@@ -30,7 +30,7 @@ export default class Events extends React.Component {
   fetchData = () => {
 
     const { page } = this.state;
-    const url = `http://www.bros-jeans.com/wp-json/wp/v2/posts?page=${page}&results=20`;
+    const url = `http://www.bros-jeans.com/wp-json/wp/v2/posts?page=${page}&results=20&categories=101`;
  
     this.setState({ loading: true });
     fetch(url)
@@ -50,7 +50,7 @@ export default class Events extends React.Component {
         this.setState({ loading: false });
       });
   };
-  componentDidMoutn(){
+  componentWillMount(){
     const urlSiteDetail = "http://www.bros-jeans.com/wp-json"
     fetch(urlSiteDetail)
     .then(res => {

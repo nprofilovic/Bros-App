@@ -13,6 +13,7 @@ export default class AllProducts extends React.Component {
     render(){
         return(
             <View style={styles.container}>
+                
                  <ProductsNavi />
        
             </View>

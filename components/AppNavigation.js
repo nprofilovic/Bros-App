@@ -1,7 +1,7 @@
 
 import React from 'react'
-import { Text, StyleSheet, Image } from 'react-native'
-import { StackNavigator, DrawerNavigator } from 'react-navigation'
+import { Text, StyleSheet, Image, View, Container, Header, Body, Content } from 'react-native'
+import { StackNavigator, DrawerNavigator, DrawerItems } from 'react-navigation'
 import Home from './Home';
 import Events from './Events';
 import Photos from './Photos';
@@ -17,11 +17,12 @@ import { Icon } from 'react-native-elements';
 const DrawerStack = DrawerNavigator({
   Naslovna: { screen: Home },
   Vesti: { screen: Events },
-  Photos: { screen: Photos },
   Prodizvodi: { screen: AllProducts },
   Prodavnice: { screen: Stores },
+  
   Onama: { screen: About },
   Kontakt: { screen: Contact },
+  
   EventItem: {screen: EventItem,
     navigationOptions: {
       drawerLabel: () => null // to hide this header
@@ -33,9 +34,25 @@ const DrawerStack = DrawerNavigator({
 {
   contentOptions: {
     activeTintColor: '#ac1d21',
+   
   },
   
+  
+  
 }
+)
+
+const CustomDrawerContentComponent = (props) => (
+  <Container>
+    <Header>
+      <Body>
+        <Image style={styles.headerLogo} source={{uri: "http://www.bros-jeans.com/wp-content/uploads/2018/02/logobros-kocka.jpg"}}/>
+      </Body>
+    </Header>
+    <Content>
+      <DrawerItems {...props} />
+    </Content>
+  </Container>
 )
 
 const DrawerNavigation = StackNavigator({
@@ -79,6 +96,10 @@ const styles = StyleSheet.create({
       marginTop: 20,
       width:110,
       height: 50,
+    },
+    headerLogo: {
+      height: 150,
+      width: 150
     }
   });
 export default DrawerNavigation;

@@ -19,9 +19,11 @@
     "preset": "jest-expo"
   },
   "dependencies": {
+    "crypto-js": "^3.1.9-1",
     "dateformat": "^3.0.3",
     "expo": "^25.0.0",
     "native-base": "^2.3.8",
+    "oauth-1.0a": "^2.2.4",
     "react": "16.2.0",
     "react-native": "0.52.0",
     "react-native-elements": "^0.19.0",

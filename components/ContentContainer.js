@@ -6,18 +6,18 @@ class ContentContainer extends React.Component {
   render(){
     return(
       <View style={styles.contentContainer}>
-          <View style={styles.col2} onPress={() => this.props.navigation.navigate('Events')}>
+          <View style={styles.col2} onPress={() => this.props.navigation.navigate('Vesti')}>
               <CustomImage  imageSource={require('../img/Woman02.jpg')} />
           </View>
           <View style={styles.col1}>
-              <CustomImage imageSource={require('../img/Woman1.jpg')} />
+              <CustomImage imageSource={require('../img/Woman1a.jpg')} />
           </View>
           <View style={styles.contentBanner}>
               <CustomImage imageSource={require('../img/get-1.jpg')} />
           </View>
 
           <View style={styles.col1}>
-              <CustomImage imageSource={require('../img/Man1.jpg')} />
+              <CustomImage imageSource={require('../img/Man1a.jpg')} />
           </View>
           <View style={styles.col2}>
               <CustomImage imageSource={require('../img/Man02.jpg')} />
