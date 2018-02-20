@@ -1,5 +1,3 @@
-'use strict';
-
 import React, {Component} from "react";
 import {
 	TextInput,
@@ -94,7 +92,9 @@ export default class ProductsMan extends Component {
 
 		Api.get('products', {
 			per_page: this.state.limit,
-			page: this.state.page
+			page: this.state.page,
+			category: 546,
+			order: 'asc'
 		})
 			.then(function (data) {
 				console.log(data);

@@ -1,5 +1,3 @@
-'use strict';
-
 import React, {Component} from "react";
 import {
 	TextInput,
@@ -48,12 +46,12 @@ export default class ProductsWoman extends Component {
 				{
 					id: 21
 				}
-      ],
-      data:[],
-      text: '',
+     		 ],
+			data:[],
+			text: '',
 			isOnline: true,
-      isLoading: false,
-      refreshing: false,
+			isLoading: false,
+			refreshing: false,
 			finish: false,
 			_animatedMenu: new Animated.Value(0),
 			dataSource: new ListView.DataSource({
@@ -108,7 +106,9 @@ export default class ProductsWoman extends Component {
 			per_page: this.state.limit,
 			page: this.state.page,
 			status: this.state.status,
-			categories:this.state.categories[0].id
+			category: 547,
+			order: 'asc'
+			
 		})
 			.then(function (data) {
 				console.log(data);
@@ -189,7 +189,9 @@ export default class ProductsWoman extends Component {
   };
 
 	render() {
-    
+		console.log('====================================');
+		console.log(this.state.data);
+		console.log('====================================');
     
 		if (this.state.isLoading) {
       return (
@@ -211,9 +213,9 @@ export default class ProductsWoman extends Component {
 					<ListView
 						onEndReached={this.onEndReached.bind(this)}
 						dataSource={this.state.dataSource}
-            onRefresh={this.handleRefresh}
-            ListFooterComponent={this.renderFooter}
-            onEndReached={this.handleLoadMore}
+						onRefresh={this.handleRefresh}
+						ListFooterComponent={this.renderFooter}
+						onEndReached={this.handleLoadMore}
 						renderRow={this.renderRow}>
             
 					</ListView>
