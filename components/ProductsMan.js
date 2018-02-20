@@ -10,6 +10,7 @@ import {
 	ListView,
 	Animated,
 	TouchableOpacity,
+	ActivityIndicator,
 	ScrollView,
 	Platform,
 	Dimensions,
@@ -25,7 +26,7 @@ var offset = 0;
 var offsetHeader = 100;
 var beta = 50;
 
-export default class Product extends Component {
+export default class ProductsMan extends Component {
     static navigationOptions = {
         tabBarIcon: ({tintColor}) => {
           return <Icon type="foundation" name="torso" size={24} color={tintColor} />
@@ -38,7 +39,7 @@ export default class Product extends Component {
 		this.data = [];
 		this.state = {
 			page: 1,
-			limit: 30,
+			limit: 5,
 			isOnline: true,
 			isLoading: false,
 			finish: false,
@@ -124,6 +125,13 @@ export default class Product extends Component {
 	}
 
 	render() {
+		if (this.state.isLoading) {
+			return (
+			  <View style={{flex: 1, paddingTop: 20}}>
+				<ActivityIndicator />
+			  </View>
+			);
+		}
 		return (
 			<View style={product.color}>
 				

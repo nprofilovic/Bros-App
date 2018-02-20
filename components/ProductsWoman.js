@@ -3,12 +3,13 @@
 import React, {Component} from "react";
 import {
 	TextInput,
-
+	Text,
 	View,
 	Image,
 	StatusBarIOS,
 	ListView,
-	Animated,
+  Animated,
+  ActivityIndicator,
 	TouchableOpacity,
 	ScrollView,
 	Platform,
@@ -16,8 +17,7 @@ import {
 	NetInfo,
 	DeviceEventEmitter
 } from "react-native";
-import { Icon } from 'react-native-elements';
-import { Container, Header, DeckSwiper, Card, CardItem, Thumbnail, Text, Left, Body } from 'native-base';
+import { Icon, SearchBar } from 'react-native-elements';
 import ProductItem from "./ProductItem";
 import Api from "../WooCommerce/Api";
 import css from "../styles/style";
@@ -26,23 +26,34 @@ var offset = 0;
 var offsetHeader = 100;
 var beta = 50;
 
-export default class Product extends Component {
+export default class ProductsWoman extends Component {
     static navigationOptions = {
         tabBarIcon: ({tintColor}) => {
-          return <Icon type="foundation" name="torso-female" size={24} color={tintColor} />
+          return <Icon type="foundation" name="torso" size={24} color={tintColor} />
         }
     }
+
 
 	constructor(props) {
 		super(props);
 		this.data = [];
 		this.state = {
-		    page: 1,
-			limit: 30,
+			page: 1,
+			limit: 5,
 			status: "publish",
-		    categories: 21,
+			categories:[
+				{
+					id: 547
+				},
+				{
+					id: 21
+				}
+      ],
+      data:[],
+      text: '',
 			isOnline: true,
-			isLoading: false,
+      isLoading: false,
+      refreshing: false,
 			finish: false,
 			_animatedMenu: new Animated.Value(0),
 			dataSource: new ListView.DataSource({
@@ -85,7 +96,7 @@ export default class Product extends Component {
 	componentWillMount() {
 		this.fetchData();
 	}
-	
+
 	fetchData() {
 		var self = this;
 		if (this.state.finish || !this.state.isOnline) {
@@ -97,16 +108,16 @@ export default class Product extends Component {
 			per_page: this.state.limit,
 			page: this.state.page,
 			status: this.state.status,
-			categories: this.state.categories
+			categories:this.state.categories[0].id
 		})
 			.then(function (data) {
 				console.log(data);
 
 				self.data = self.data.concat(data);
 				self.setState({
-                    page: self.state.page + 1,
-                    categories: self.state.categories,
+					page: self.state.page + 1,
 					finish: data.length < self.state.limit,
+					categories: self.state.categories,
 					isLoading: false,
 					dataSource: self.getDataSource(self.data)
 				});
@@ -126,22 +137,85 @@ export default class Product extends Component {
 		return (
 			<ProductItem product={product}></ProductItem>
 		);
-    }
-    
-    
+	}
+  filterSearch(text) {
+    const data = this.fetchData();
+    const newData = data.filter((item) => {
+        const itemData = item.name.toUpperCase()
+        const textData = text.toUpperCase()
+        return itemData.indexOf(textData) > -1
+    });
+
+    this.setState({
+        text: text,
+        dataSource: this.state.dataSource.cloneWithRows(newData)
+    });
+  }
+
+  handleLoadMore = () => {
+    this.setState(
+      {
+        page: this.state.page + 1
+      },
+      () => {
+        this.fetchData();
+      }
+    );
+  };
+
+  handleRefresh = () => {
+    this.setState(
+      {
+        page: 1,
+        refreshing: true
+      },
+      () => {
+        this.fetchData();
+      }
+    );
+  };
+  renderFooter = () => {
+    return (
+      <View
+        style={{
+          paddingVertical: 20,
+          borderTopWidth: 1,
+          borderColor: "#CED0CE"
+        }}
+      >
+        <ActivityIndicator animating size="large" />
+      </View>
+    );
+  };
+
 	render() {
-       
+    
+    
+		if (this.state.isLoading) {
+      return (
+        <View style={{flex: 1, paddingTop: 20}}>
+          <ActivityIndicator />
+        </View>
+      );
+    }
+		
 		return (
-			<View >
-				
+			<View style={product.color}>
+        
+
 				<ScrollView
 					style={{paddingTop: 20}}
 					onScroll={this.onScroll.bind(this)} scrollEventThrottle={30}
 				>
+					
 					<ListView
 						onEndReached={this.onEndReached.bind(this)}
 						dataSource={this.state.dataSource}
+            onRefresh={this.handleRefresh}
+            ListFooterComponent={this.renderFooter}
+            onEndReached={this.handleLoadMore}
 						renderRow={this.renderRow}>
+            
 					</ListView>
 				</ScrollView>
 			</View>
